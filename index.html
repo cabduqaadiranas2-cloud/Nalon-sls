@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nion SLS — Creator Monetization Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#08080a;
+  --surface:#0f0f12;
+  --card:#17171d;
+  --border:#2a2a35;
+  --accent:#c8f135;
+  --accent-dim:#9fb82a;
+  --text:#f0f0ee;
+  --muted:#8a8a96;
+  --muted2:#55555f;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+ 
+nav{position:fixed;top:0;left:0;right:0;z-index:99;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.04);backdrop-filter:blur(12px);background:rgba(8,8,10,0.7)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo img{width:36px;height:36px;object-fit:contain;filter:invert(1)}
+.logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;letter-spacing:-0.5px;color:var(--text)}
+.logo-text span{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#000;border:none;padding:10px 24px;border-radius:100px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;cursor:pointer}
+.nav-cta:hover{background:#d4f54a}
+ 
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 40px 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(200,241,53,0.06) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(200,241,53,0.03) 0%,transparent 70%);pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(200,241,53,0.08);border:1px solid rgba(200,241,53,0.2);color:var(--accent);padding:6px 16px;border-radius:100px;font-size:13px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:32px;width:fit-content}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+h1{font-family:'Syne',sans-serif;font-size:clamp(44px,7vw,84px);font-weight:800;line-height:1.0;letter-spacing:-2px;margin-bottom:28px;max-width:800px}
+h1 .line-accent{color:var(--accent)}
+.hero-sub{font-size:18px;color:var(--muted);max-width:480px;margin-bottom:48px;line-height:1.7;font-weight:300}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#000;border:none;padding:16px 36px;border-radius:100px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:16px;cursor:pointer;transition:transform 0.15s,background 0.15s}
+.btn-primary:hover{background:#d4f54a;transform:translateY(-1px)}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border);padding:16px 36px;border-radius:100px;font-family:'DM Sans',sans-serif;font-weight:400;font-size:16px;cursor:pointer;transition:border-color 0.15s,background 0.15s}
+.btn-secondary:hover{border-color:var(--muted);background:rgba(255,255,255,0.03)}
+ 
+.proof-bar{padding:20px 40px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:48px;overflow-x:auto}
+.proof-stat{text-align:center;flex-shrink:0}
+.proof-stat .num{font-family:'Syne',sans-serif;font-size:28px;font-weight:700;color:var(--accent)}
+.proof-stat .label{font-size:12px;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase;margin-top:2px}
+.proof-div{width:1px;height:40px;background:var(--border);flex-shrink:0}
+ 
+section{padding:100px 40px}
+.section-tag{font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+h2{font-family:'Syne',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:700;letter-spacing:-1px;line-height:1.1;margin-bottom:20px}
+.section-sub{font-size:17px;color:var(--muted);max-width:500px;font-weight:300;line-height:1.7}
+ 
+.services{background:var(--surface)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--border);margin-top:64px;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.service-card{background:var(--card);padding:40px 36px;position:relative;transition:background 0.2s}
+.service-card:hover{background:#1c1c24}
+.service-num{font-family:'Syne',sans-serif;font-size:48px;font-weight:800;color:rgba(200,241,53,0.08);position:absolute;top:24px;right:28px;line-height:1}
+.service-icon{width:44px;height:44px;border-radius:12px;background:rgba(200,241,53,0.1);border:1px solid rgba(200,241,53,0.2);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:24px}
+.service-card h3{font-family:'Syne',sans-serif;font-size:20px;font-weight:600;margin-bottom:12px;line-height:1.2}
+.service-card p{font-size:15px;color:var(--muted);line-height:1.7;font-weight:300}
+ 
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:64px}
+.problem-list{display:flex;flex-direction:column;gap:20px}
+.problem-item{display:flex;align-items:flex-start;gap:16px;padding:24px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+.problem-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.problem-item h4{font-family:'Syne',sans-serif;font-size:16px;font-weight:600;margin-bottom:6px}
+.problem-item p{font-size:14px;color:var(--muted);line-height:1.6;font-weight:300}
+.problem-callout{background:var(--accent);color:#000;border-radius:16px;padding:48px 40px}
+.problem-callout .big{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;line-height:1.1;margin-bottom:16px;letter-spacing:-0.5px}
+.problem-callout .desc{font-size:16px;font-weight:400;opacity:0.75;line-height:1.6}
+ 
+.process{background:var(--surface)}
+.process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:64px;position:relative}
+.process-steps::after{content:'';position:absolute;top:44px;left:calc(16.67% + 8px);right:calc(16.67% + 8px);height:1px;background:linear-gradient(90deg,var(--accent-dim),transparent 40%,transparent 60%,var(--accent-dim));pointer-events:none}
+.process-step{padding:40px 32px;text-align:center}
+.step-num{width:44px;height:44px;border-radius:50%;background:var(--accent);color:#000;font-family:'Syne',sans-serif;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;position:relative;z-index:1}
+.process-step h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:600;margin-bottom:10px}
+.process-step p{font-size:14px;color:var(--muted);line-height:1.7;font-weight:300}
+ 
+.deliverables-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:64px}
+.del-item{border:1px solid var(--border);border-radius:12px;padding:28px 24px;background:var(--card);display:flex;align-items:flex-start;gap:14px;transition:border-color 0.2s}
+.del-item:hover{border-color:rgba(200,241,53,0.3)}
+.del-check{width:22px;height:22px;border-radius:6px;background:rgba(200,241,53,0.12);border:1px solid rgba(200,241,53,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);font-size:13px;margin-top:1px}
+.del-item span{font-size:15px;font-weight:400;line-height:1.4}
+ 
+.cta-section{text-align:center;background:var(--surface);padding:120px 40px}
+.cta-section h2{max-width:580px;margin:0 auto 20px}
+.cta-section .cta-sub{font-size:17px;color:var(--muted);max-width:420px;margin:0 auto 48px;font-weight:300}
+.cta-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+
+/* Social links */
+.social-links{display:flex;justify-content:center;gap:16px;margin-top:32px;flex-wrap:wrap}
+.social-link{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border:1px solid var(--border);border-radius:100px;color:var(--muted);text-decoration:none;font-size:14px;font-weight:400;transition:border-color 0.15s,color 0.15s,background 0.15s}
+.social-link:hover{border-color:rgba(200,241,53,0.4);color:var(--accent);background:rgba(200,241,53,0.05)}
+.social-link svg{width:16px;height:16px;flex-shrink:0}
+ 
+footer{padding:32px 40px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:20px}
+.footer-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-logo img{width:28px;height:28px;object-fit:contain;filter:invert(1)}
+.footer-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:16px}
+.footer-logo-text span{color:var(--accent)}
+.footer-socials{display:flex;gap:12px;align-items:center}
+.footer-social-link{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border);border-radius:50%;color:var(--muted);text-decoration:none;transition:border-color 0.15s,color 0.15s}
+.footer-social-link:hover{border-color:rgba(200,241,53,0.4);color:var(--accent)}
+.footer-social-link svg{width:16px;height:16px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-top:1px solid var(--border);padding-top:20px}
+footer p{font-size:13px;color:var(--muted2)}
+footer a{color:var(--muted);text-decoration:none;font-size:13px}
+footer a:hover{color:var(--accent)}
+ 
+@media(max-width:700px){
+  nav{padding:16px 20px}
+  .hero{padding:100px 20px 60px}
+  section{padding:70px 20px}
+  .proof-bar{padding:16px 20px;gap:24px}
+  .problem-grid{grid-template-columns:1fr}
+  .process-steps{grid-template-columns:1fr}
+  .process-steps::after{display:none}
+  footer{padding:24px 20px}
+  .footer-top{flex-direction:column;align-items:flex-start}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:8px}
+  .cta-section{padding:80px 20px}
+}
+</style>
+</head>
+<body>
+ 
+<nav>
+  <div class="logo">
+    <img src="N.jpeg" alt="Nion SLS logo"/>
+    <div class="logo-text">Nion <span>SLS</span></div>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Work With Us</button>
+</nav>
+ 
+<section class="hero">
+  <div class="hero-tag">Taking on new clients</div>
+  <h1>You create.<br/><span class="line-accent">We build the</span><br/>money system.</h1>
+  <p class="hero-sub">We help rising creators turn their audience into structured, predictable income — without the guesswork.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Work With Us</button>
+    <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">See What We Do</button>
+  </div>
+</section>
+ 
+<div class="proof-bar">
+  <div class="proof-stat"><div class="num">17+</div><div class="label">Creators Scaled</div></div>
+  <div class="proof-div"></div>
+  <div class="proof-stat"><div class="num">$10k</div><div class="label">Revenue Generated</div></div>
+  <div class="proof-div"></div>
+  <div class="proof-stat"><div class="num">3×</div><div class="label">Avg. Income Lift</div></div>
+  <div class="proof-div"></div>
+  <div class="proof-stat"><div class="num">30 days</div><div class="label">First Results</div></div>
+</div>
+ 
+<section class="services" id="services">
+  <div class="section-tag">What we do</div>
+  <h2>Three systems.<br/>One outcome.</h2>
+  <p class="section-sub">Everything a creator needs to convert attention into income — built and managed for you.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">🧱</div>
+      <h3>Creator Landing Pages</h3>
+      <p>High-converting pages built to capture leads, sell products, and turn followers into customers — not just fans.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">🤖</div>
+      <h3>Monetization Systems</h3>
+      <p>Funnels, automations, and income structures that work while you focus on content. No more leaving money on the table.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">📈</div>
+      <h3>Growth Infrastructure</h3>
+      <p>Sponsorship pipelines, offer setup, and revenue diversification — so one bad month never breaks your business.</p>
+    </div>
+  </div>
+</section>
+ 
+<section>
+  <div class="section-tag">The problem</div>
+  <h2>Views don't pay bills.<br/>Systems do.</h2>
+  <div class="problem-grid">
+    <div class="problem-list">
+      <div class="problem-item">
+        <div class="problem-icon">💸</div>
+        <div>
+          <h4>No income structure</h4>
+          <p>You have an audience but no consistent way to monetize it. Revenue is random, not repeatable.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon">🎲</div>
+        <div>
+          <h4>Random sponsorships</h4>
+          <p>Brand deals come in when they want, not when you need them. There's no pipeline, no consistency.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon">🕳️</div>
+        <div>
+          <h4>Money leaking everywhere</h4>
+          <p>Without systems, you can't capture, convert, or retain revenue — even from a growing audience.</p>
+        </div>
+      </div>
+    </div>
+    <div class="problem-callout">
+      <div class="big">You're already growing.<br/>We fix the money side.</div>
+      <div class="desc">Most creators are 90% of the way there. They just don't have the infrastructure to cash in on what they've already built.</div>
+    </div>
+  </div>
+</section>
+ 
+<section class="process">
+  <div class="section-tag">How it works</div>
+  <h2>Simple process.<br/>Real results.</h2>
+  <p class="section-sub">Three focused steps — from zero structure to a fully working income system.</p>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <h3>Audit</h3>
+      <p>We analyse your content, audience, and current monetization. Find the gaps and the opportunities.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <h3>Build</h3>
+      <p>We build your landing page, funnel, and monetization structure — everything set up and ready to generate.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <h3>Optimise</h3>
+      <p>We iterate on what's working, plug any leaks, and scale the income flows that perform best.</p>
+    </div>
+  </div>
+</section>
+ 
+<section>
+  <div class="section-tag">What you get</div>
+  <h2>Everything included.<br/>Nothing missing.</h2>
+  <div class="deliverables-grid">
+    <div class="del-item"><div class="del-check">✓</div><span>Custom creator landing page</span></div>
+    <div class="del-item"><div class="del-check">✓</div><span>Monetization funnel setup</span></div>
+    <div class="del-item"><div class="del-check">✓</div><span>Sponsorship pipeline structure</span></div>
+    <div class="del-item"><div class="del-check">✓</div><span>Lead capture & email system</span></div>
+    <div class="del-item"><div class="del-check">✓</div><span>Offer creation + positioning</span></div>
+    <div class="del-item"><div class="del-check">✓</div><span>AI automation layer (optional)</span></div>
+    <div class="del-item"><div class="del-check">✓</div><span>30-day optimisation support</span></div>
+    <div class="del-item"><div class="del-check">✓</div><span>Revenue diversification plan</span></div>
+  </div>
+</section>
+ 
+<section class="cta-section" id="cta">
+  <div class="section-tag">Ready to start</div>
+  <h2>Stop leaving money in your content.</h2>
+  <p class="cta-sub">Email us and we'll audit your current setup for free — no commitment, just clarity.</p>
+  <div class="cta-btns">
+    <button class="btn-primary" style="font-size:17px;padding:18px 44px" onclick="window.location.href='mailto:Nalon.sls17@gmail.com?subject=Work With Nion SLS'">Email Us to Start →</button>
+    <button class="btn-secondary" style="font-size:17px;padding:18px 44px" onclick="window.location.href='mailto:Nalon.sls17@gmail.com?subject=Apply to Work With Nion SLS'">Book an Appointment</button>
+  </div>
+  <p style="margin-top:24px;font-size:14px;color:var(--muted)">Nalon.sls17@gmail.com</p>
+
+  <!-- Social links in CTA -->
+  <div class="social-links">
+    <a class="social-link" href="https://www.instagram.com/nalon.sls17" target="_blank" rel="noopener">
+      <!-- Instagram icon -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+      </svg>
+      @nalon.sls17
+    </a>
+    <a class="social-link" href="https://www.tiktok.com/@nalon.sls17" target="_blank" rel="noopener">
+      <!-- TikTok icon -->
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
+      </svg>
+      @nalon.sls17
+    </a>
+    <a class="social-link" href="https://www.facebook.com/nalon.sls17" target="_blank" rel="noopener">
+      <!-- Facebook icon -->
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.028 4.388 11.022 10.125 11.927v-8.437H7.078v-3.49h3.047V9.428c0-3.014 1.793-4.678 4.533-4.678 1.312 0 2.686.234 2.686.234v2.953h-1.514c-1.491 0-1.956.927-1.956 1.878v2.258h3.328l-.532 3.49h-2.796V24C19.612 23.095 24 18.101 24 12.073z"/>
+      </svg>
+      Facebook
+    </a>
+  </div>
+</section>
+ 
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">
+      <img src="N.jpeg" alt="Nion SLS"/>
+      <div class="footer-logo-text">Nion <span>SLS</span></div>
+    </div>
+    <div class="footer-socials">
+      <!-- Instagram -->
+      <a class="footer-social-link" href="https://www.instagram.com/nalon.sls17" target="_blank" rel="noopener" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <!-- TikTok -->
+      <a class="footer-social-link" href="https://www.tiktok.com/@nalon.sls17" target="_blank" rel="noopener" title="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
+        </svg>
+      </a>
+      <!-- Facebook -->
+      <a class="footer-social-link" href="https://www.facebook.com/nalon.sls17" target="_blank" rel="noopener" title="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.028 4.388 11.022 10.125 11.927v-8.437H7.078v-3.49h3.047V9.428c0-3.014 1.793-4.678 4.533-4.678 1.312 0 2.686.234 2.686.234v2.953h-1.514c-1.491 0-1.956.927-1.956 1.878v2.258h3.328l-.532 3.49h-2.796V24C19.612 23.095 24 18.101 24 12.073z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <a href="mailto:Nalon.sls17@gmail.com">Nalon.sls17@gmail.com</a>
+    <p>© 2026 · Built for creators who are serious about income.</p>
+  </div>
+</footer>
+ 
+</body>
+</html>
